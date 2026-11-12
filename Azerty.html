@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation javascrpt sur OppenClassRoom</title>
+    <link rel="stylesheet" href="Azerty.css">
+    <link rel="stylesheet" href="fontawesome-free-7.3.0-web/css/all.min.css">
+   
+    <script src="Azerty.js" defer></script>
+</head>
+<body>
+    
+   <h1>Azertype </h1> 
+   <h3> L'application pour écrire plus vite</h3>
+   <p class="para"> Azertype est une application en ligne pour apprendre à taper plus vite au clavier </p>
+
+   <form action="traitement.php" method="post">
+    <p> Choisissez votre option et tapez la proposition qui s'affiche dans le champ en-dessous</p>
+ <div class="div1">
+    <label for="radio"> <input type="radio" name="ChooseUser" id="ChooseUser" value="RadioMots" checked> Mots</label>
+    <label for="radio" >  <input type="radio" name="ChooseUser" id="ChooseUser1" value="RadioMots"> Phrases</label>
+ </div>
+    <p id="ZoneText">  Cachalot   </p>
+
+    <label for="ChampDeSaisir" class="label2"> <input type="text" name="DatasUser" id=" DatasUser" placeholder="Saissiez Ici"> 
+        <button type="submit" id="bouton">Valider</button>
+    </label>
+     
+    <p id="ScoreUser"> votre Score : 0/0</p>
+
+ <div class="divShare"> 
+    <input type="submit" value="Partager" id="bouton1" > <i class="fa-solid fa-share-nodes" id="iconShare"></i>
+ </div>
+    
+
+   </form>
+   <footer> &COPY;Copyright: Openclassrooms.</footer>
+</body>
+</html>
+
+ 
