@@ -1,11 +1,4 @@
 
-    
-    
-     /****------------------Declaration de nos differents variables-----------------------****/
-
-let listMots = ['Gratitude', 'Génériosité', 'Amour', 'Bienveillane', 'Respect', 'Bonheur'],
-    listPhrases = ["Avant mes ", "25 ans, ", 'par la grace de', 'DIEU', 'je vais touché ', 'first MILLIONS'],
-    choixUser;
 
 
 /* Azerty est une mini appli de jeu qui propose des mots ou des phrases aux users en fonction de leurs choix
@@ -53,31 +46,7 @@ function LancerBoucleDeJeu(type, listproposition) {
 
 // La fonction principal qui fait office d'appelle de tous les fonctions ci-dessous
 
-function LancerJeu() {
 
-  let choix = choisirPhrasesOuMots(), score = 0, nbreDeproposition = 0;
-
-  if (choix === null) {
-    return;
-  }
- 
-  /*Maintenant en ce servant de la fonction LancerBoucleDeJeu() et en fonction du choix du User 
-  on utilisera cette fonction pour proposée le contenue de son choix */
-
-  if (choix === 'mots') {
-    
-    score = LancerBoucleDeJeu('le mot', listMots);
-    // Dans ce cas la valeur de nbreDeProposition ne vaut plus ZERO (0)
-    nbreDeproposition = listMots.length;
-  } else {
-    score = LancerBoucleDeJeu('La phrases', listPhrases);
-     // Dans ce cas la valeur de nbreDeProposition ne vaut plus ZERO (0)
-    nbreDeproposition = listPhrases.length;
-  }
-
-  AfficherResultat( score , nbreDeProposition)
-
-}
    // appelle de notre fonction principale 
 
 LancerJeu()   
