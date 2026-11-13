@@ -9,8 +9,14 @@ et mentionne ses propositions puis l'application affiche le résultat */
 // Organisation et lisibilité du code grace aux fonctions
 
 function AfficherResultat( score , nbreDeProposition) {
+  let ScoreUser = document.querySelector('#ScoreUser') , spanScore = document.querySelector('#ScoreUser span');
   // Afficher le score de l'utilidateur
-  console.log("Vous aviez obtenu un score de " +score+ '/' +nbreDeProposition);
+  ScoreUser.innerHTML = `Votre score est de:${score}/${nbreDeProposition}`;
+  if (score > nbreDeProposition/2) {
+    
+  } else {
+    
+  }
 }
 
 /* La fonction qui sert de choix entre listmots et listphrases */
