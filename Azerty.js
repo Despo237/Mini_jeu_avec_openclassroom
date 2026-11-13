@@ -10,7 +10,7 @@ et mentionne ses propositions puis l'application affiche le résultat */
 
 function AfficherResultat( score , nbreDeProposition) {
   // Afficher le score de l'utilidateur
-  console.log("Vous aviez obtenu un score de " + score + '/' +nbreDeProposition);
+  console.log("Vous aviez obtenu un score de " +score+ '/' +nbreDeProposition);
 }
 
 /* La fonction qui sert de choix entre listmots et listphrases */

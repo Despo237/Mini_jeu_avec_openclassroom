@@ -25,3 +25,21 @@ function LancerJeu() {
   AfficherResultat(score, nbreDeproposition)
 
 }
+
+// Récuperation des elements de la pages
+
+ let DataUser = document.getElementById('DataUser').value , bouton = document.getElementById('bouton'),
+ZoneText = document.querySelector('#ZoneText'), ScoreUser = document.querySelector('#ScoreUser');
+ 
+// Affichage des valeurs recuperer dans la page HTML
+ console.log(`donnee User:${DataUser}\n bouton:${bouton} \n ZoneText:${ZoneText} \n ScoreUser:${ScoreUser}`);
+ // recuperation des bouton radios
+
+
+let div1 = document.querySelectorAll('.div1 input[name = ChooseUser]') , choixRadio;
+
+for (let i = 0; i < div1.length; i++) {
+  div1[i].addEventListener('change', function() {
+    choixRadio = this.value;
+    console.log("choix de l'utilisateur: " +choixRadio);
+  }) };
