@@ -4,6 +4,6 @@
    /****------------------Declaration de nos differents variables-----------------------****/
 
 let listMots = ['Gratitude', 'Génériosité', 'Amour', 'Bienveillane', 'Respect', 'Bonheur'],
-    listPhrases = ["Avant mes ", "25 ans, ", 'par la grace de', 'DIEU', 'je vais touché ', 'first MILLIONS'],
-    choixUser;
+    listPhrases = ["Avant mes ", "25 ans, ", 'par la grace de', 'DIEU', 'je vais touché ', 'my first MILLIONS', 'INCHALLAH'],
+    choixUser 
 

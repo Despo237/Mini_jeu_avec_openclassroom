@@ -182,7 +182,9 @@ footer{
         width: 90%;        * {
             box-sizing: border-box;
         }
-        margin: 0% auto;
+        margin: 0% auto; *{
+            box-sizing: border-box;
+        }
         border: 1px  rgb(82, 6, 40) solid;;
         margin-top: 40px;  
         padding: 24px;
@@ -204,4 +206,8 @@ footer{
         position: relative;
         bottom: 40px;
     }
+   #iconShare{
+    font-size: 30px;
+    left: -59px;
+} 
   }
