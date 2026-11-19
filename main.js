@@ -1,10 +1,6 @@
  
  
  function  AfficherProposition(proposition){
-<<<<<<< HEAD
-=======
-        // Récuperation de ID ou sera afficher nos propositions
->>>>>>> 1e8ee3a0d6a4b5221bbd7e48f81c1057c3b62cca
     let zoneproposition = document.getElementById('ZoneText')
     zoneproposition.textContent = proposition
  }
@@ -31,7 +27,6 @@
  let DataUser = document.getElementById('DataUser') , bouton = document.getElementById('bouton'),
 ZoneText = document.querySelector('#ZoneText'), ScoreUser = document.querySelector('#ScoreUser');
  
-<<<<<<< HEAD
 let i = 0 , score = 0
 let propositionsActuelles = listMots; // ED: conserve la liste correspondant au mode sélectionné.
 let boutonsChoix = document.querySelectorAll('.div1 input[name="ChooseUser"]'); // ED: récupère les deux choix de mode.
@@ -49,40 +44,7 @@ boutonPartage.addEventListener('click', () => { // ED: lance le code suivant uni
     alert('La fenêtre de partage a été bloquée. Autorisez les fenêtres pop-up pour ce site.'); // ED: explique à l’utilisateur comment autoriser la popup.
   } // ED: termine la vérification du blocage.
 }); // ED: termine l’écouteur du clic sur le bouton.
-=======
-let i = 0 , score = 0 , listeProposition = listMots
->>>>>>> 1e8ee3a0d6a4b5221bbd7e48f81c1057c3b62cca
 
-// On propose la première proposition avant que le user ne click sur le bouton valider
-
-AfficherProposition(listeProposition[i]);
-
-bouton.addEventListener('click', () => {
-
-    // Comparaison entre la valeur de l'input du User et la valeur de la liste des mots ou de phrases
-    if (DataUser.value.trim().toLowerCase() === listeProposition[i].trim().toLowerCase()) {
-      score++
-    }
-    i++;
-    AfficherResultat(score, listeProposition.length);
-    DataUser.value = '';
-
-    if (i === listeProposition.length) {
-      // Si l'indice i vaut le nombre de proposition total alors :
-      AfficherProposition('Le jeu est terminé !!');
-      bouton.disabled = true;
-      verdictDuJeu(score, listeProposition.length);
-    } else {
-      AfficherProposition(listeProposition[i]);
-    }
-  });
-
-  AfficherResultat(score, listeProposition.length);
-
- // recuperation des bouton radios
-
-
-<<<<<<< HEAD
 function demarrerPartie(propositions) { // ED: initialise une nouvelle partie avec la liste choisie.
   propositionsActuelles = propositions; // ED: mémorise les propositions utilisées par la partie.
   i = 0; // ED: revient à la première proposition.
@@ -121,25 +83,3 @@ bouton.addEventListener('click', () => {
       demarrerPartie(nouvelleListe); // ED: affiche le contenu du mode choisi et réinitialise la partie.
     }); // ED: termine l’écouteur du changement de mode.
   } // ED: termine l’installation des écouteurs radio.
-=======
-for (let index = 0; index < div1.length; index++) {
-   // l'evenement CHANGE c'est pour savoir si quelque chose viens de changer dans nos case a cocher
-  div1[index].addEventListener('change', function(event) {
-    // event.target c'est savoir quel des case a cocher a déclencher notre événement change 
-    choixRadio = event.target.value
-    console.log("choix de l'utilisateur: " +choixRadio);
-    /* étant donner que notre jeu ne propose que la liste de mots, si notre variable  choixRadio vaut l'une de value 
-     des bouton radio alors :*/
-
-    if (choixRadio === 'RadioMots') {
-      // on fait appelle a la, liste de mots
-        listeProposition = listMots
-    } else {
-     listeProposition = listPhrases
-       
-    } 
-    AfficherProposition(listeProposition[i]);
-  }) };
-
-    
->>>>>>> 1e8ee3a0d6a4b5221bbd7e48f81c1057c3b62cca
