@@ -1,45 +1,87 @@
-
-
-function LancerJeu() {
-
-  let choix = choisirPhrasesOuMots(), score = 0, nbreDeproposition = 0;
-
-  if (choix === null) {
-    return;
-  }
  
-  /*Maintenant en ce servant de la fonction LancerBoucleDeJeu() et en fonction du choix du User 
-  on utilisera cette fonction pour proposée le contenue de son choix */
+ 
+ function  AfficherProposition(proposition){
+    let zoneproposition = document.getElementById('ZoneText')
+    zoneproposition.textContent = proposition
+ }
+ function verdictDuJeu(score, nombreDePropositions) {
+  let span1 = document.querySelector('.span1');
 
-  if (choix === 'mots') {
-    
-    score = LancerBoucleDeJeu('le mot', listMots);
-    // Dans ce cas la valeur de nbreDeProposition ne vaut plus ZERO (0)
-    nbreDeproposition = listMots.length;
+  if (score > nombreDePropositions / 2) {
+     span1.textContent = "Félicitations, test réussi !";
+    span1.style.color = 'green';
+    span1.style.fontSize = '1.5rem';
+    span1.style.fontFamily = 'cursive , lucida sans , arial';
+    span1.style.textAlign = 'center';
   } else {
-    score = LancerBoucleDeJeu('La phrases', listPhrases);
-     // Dans ce cas la valeur de nbreDeProposition ne vaut plus ZERO (0)
-    nbreDeproposition = listPhrases.length;
+     span1.textContent = "Dommage, vous avez échoué";
+    span1.style.color = 'black';
+    span1.style.fontSize = '1.5rem';
+    span1.style.fontFamily = 'cursive , lucida sans , arial';
+    span1.style.textAlign = 'center';
   }
+ }
 
-  AfficherResultat(score, nbreDeproposition)
+  // Récuperation des elements de la pages
 
-}
-
-// Récuperation des elements de la pages
-
- let DataUser = document.getElementById('DataUser').value , bouton = document.getElementById('bouton'),
+ let DataUser = document.getElementById('DataUser') , bouton = document.getElementById('bouton'),
 ZoneText = document.querySelector('#ZoneText'), ScoreUser = document.querySelector('#ScoreUser');
  
-// Affichage des valeurs recuperer dans la page HTML
- console.log(`donnee User:${DataUser}\n bouton:${bouton} \n ZoneText:${ZoneText} \n ScoreUser:${ScoreUser}`);
- // recuperation des bouton radios
+let i = 0 , score = 0
+let propositionsActuelles = listMots; // ED: conserve la liste correspondant au mode sélectionné.
+let boutonsChoix = document.querySelectorAll('.div1 input[name="ChooseUser"]'); // ED: récupère les deux choix de mode.
+
+let boutonPartage = document.getElementById('bouton1'); // ED: récupère uniquement le bouton « Partager ».
+boutonPartage.addEventListener('click', () => { // ED: lance le code suivant uniquement au clic sur ce bouton.
+  let scorePartage = `${score}/${propositionsActuelles.length}`; // ED: prépare le score avec le total de propositions du mode actif.
+  let fenetrePartage = window.open( // ED: ouvre la page de partage dans une petite fenêtre.
+    `Poppup.html?score=${encodeURIComponent(scorePartage)}`, // ED: transmet le score dans l’adresse en l’encodant correctement.
+    'partagerScore', // ED: donne un nom à la fenêtre pour la réutiliser si elle est déjà ouverte.
+    'popup=yes,width=700,height=500,resizable=yes,scrollbars=yes' // ED: demande une fenêtre popup de 700 × 700 pixels.
+  ); // ED: termine l’appel à window.open.
+
+  if (fenetrePartage === null) { // ED: vérifie si le navigateur a bloqué l’ouverture de la popup.
+    alert('La fenêtre de partage a été bloquée. Autorisez les fenêtres pop-up pour ce site.'); // ED: explique à l’utilisateur comment autoriser la popup.
+  } // ED: termine la vérification du blocage.
+}); // ED: termine l’écouteur du clic sur le bouton.
 
 
-let div1 = document.querySelectorAll('.div1 input[name = ChooseUser]') , choixRadio;
 
-for (let i = 0; i < div1.length; i++) {
-  div1[i].addEventListener('change', function() {
-    choixRadio = this.value;
-    console.log("choix de l'utilisateur: " +choixRadio);
-  }) };
+function demarrerPartie(propositions) { // ED: initialise une nouvelle partie avec la liste choisie.
+  propositionsActuelles = propositions; // ED: mémorise les propositions utilisées par la partie.
+  i = 0; // ED: revient à la première proposition.
+  score = 0; // ED: remet le score à zéro pour le nouveau mode.
+  DataUser.value = ''; // ED: vide la saisie précédente.
+  bouton.disabled = false; // ED: réactive le bouton si une partie précédente était terminée.
+  document.querySelector('.span1').textContent = ''; // ED: efface le résultat de la partie précédente.
+  AfficherProposition(propositionsActuelles[i]); // ED: affiche la première proposition de la liste choisie.
+  AfficherResultat(score, propositionsActuelles.length); // ED: affiche le score initial avec le bon nombre de propositions.
+} // ED: termine l’initialisation d’une partie.
+
+demarrerPartie(listMots); // ED: démarre par défaut le mode « Mots ».
+
+bouton.addEventListener('click', () => {
+
+    // Comparaison entre la valeur de l'input et la valeur de la liste des mots
+    if (DataUser.value.trim().toLowerCase() === propositionsActuelles[i].trim().toLowerCase()) { // ED: vérifie la réponse contre la proposition du mode actif.
+      score++
+    }
+    i++;
+    AfficherResultat(score, propositionsActuelles.length); // ED: met à jour le score avec le total du mode actif.
+    DataUser.value = '';
+
+    if (i === propositionsActuelles.length) { // ED: détecte la fin de la liste actuellement jouée.
+      AfficherProposition('Le jeu est terminé !!');
+      bouton.disabled = true;
+      verdictDuJeu(score, propositionsActuelles.length); // ED: calcule le résultat avec le total du mode actif.
+    } else {
+      AfficherProposition(propositionsActuelles[i]); // ED: affiche la proposition suivante de la liste active.
+    }
+  });
+
+  for (let choix of boutonsChoix) { // ED: ajoute un écouteur à chacun des deux boutons radio.
+    choix.addEventListener('change', function() { // ED: réagit immédiatement au changement de mode.
+      let nouvelleListe = this.value === 'RadioPhrases' ? listPhrases : listMots; // ED: sélectionne les phrases ou les mots.
+      demarrerPartie(nouvelleListe); // ED: affiche le contenu du mode choisi et réinitialise la partie.
+    }); // ED: termine l’écouteur du changement de mode.
+  } // ED: termine l’installation des écouteurs radio.

@@ -8,8 +8,8 @@
     <link rel="stylesheet" href="fontawesome-free-7.3.0-web/css/all.min.css">
 
     <script src="Config.js" defer></script>
-    <script src="main.js" defer></script>
     <script src="Azerty.js" defer></script>
+     <script src="main.js" defer></script>
 </head>
 <body>
     
@@ -20,8 +20,8 @@
    <form action="traitement.php" method="post">
     <p> Choisissez votre option et tapez la proposition qui s'affiche dans le champ en-dessous</p>
  <div class="div1">
-    <label for="radio"> <input type="radio" name="ChooseUser" id="ChooseUser" value="RadioMots" checked> Mots</label>
-    <label for="radio" >  <input type="radio" name="ChooseUser" id="ChooseUser1" value="RadioMots"> Phrases</label>
+    <label for="ChooseUser"> <input type="radio" name="ChooseUser" id="ChooseUser" value="RadioMots" checked> Mots</label>
+    <label for="ChooseUser1"> <input type="radio" name="ChooseUser" id="ChooseUser1" value="RadioPhrases"> Phrases</label> <!-- ED: donne une valeur distincte au choix « Phrases ». -->
  </div>
     <p id="ZoneText">  Cachalot   </p>
 
@@ -33,7 +33,8 @@
     <span class="span1"></span>
     
  <div class="divShare"> 
-    <input type="submit" value="Partager" id="bouton1" > <i class="fa-solid fa-share-nodes" id="iconShare"></i>
+    <!-- ED: transforme Partager en bouton simple afin qu’il ouvre la popup sans envoyer le formulaire du jeu. -->
+    <button type="button" id="bouton1">Partager</button> <i class="fa-solid fa-share-nodes" id="iconShare"></i>
  </div>
     
 

@@ -5,5 +5,5 @@
 
 let listMots = ['Gratitude', 'Génériosité', 'Amour', 'Bienveillane', 'Respect', 'Bonheur'],
     listPhrases = ["Avant mes ", "25 ans, ", 'par la grace de', 'DIEU', 'je vais touché ', 'first MILLIONS'],
-    choixUser;
+    choixUser 
 

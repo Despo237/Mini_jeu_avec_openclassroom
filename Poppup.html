@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<!-- ED: indique que le contenu de la popup est en français. -->
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes premiers essaies avec Git et Github</title>
+    <!-- ED: charge le script de partage après l’analyse de la page HTML. -->
+    <script src="Poppup.js" defer></script>
+     <style>
+        body{
+            background-color:  #f6F7F8 ;
+            
+        }
+         h1{
+            font-size: 28px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            text-transform: uppercase;
+            text-align: center;
+            box-shadow: 1px 1px 12px rgb(8, 75, 8);
+            color: #F60;
+            margin-top: 90px;
+            word-spacing: 10px;
+            border-radius: 90px;
+            word-spacing: 14px;
+         }
+         /* Style formulaire*/
+        form{
+            width: 50%;
+            display: flex;
+            margin: 50px auto;
+           
+            ;
+          
+        }
+        legend{
+            text-align: right;
+            color:  #270359 ;
+            font-size: 19px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+        }
+        fieldset{
+          border-bottom-right-radius: 40px;
+            border-top-left-radius: 40px;
+             background: linear-gradient(90deg , #2C363F)
+        }
+        .inp{
+            text-align: center;
+            color:rgba(92, 24, 174, 0.893);;;;
+            padding: 8px;
+            margin: 14px ;
+            margin-left: 30px;
+            width: 250px;
+            border-radius: 20px;
+            font-size: 18px;
+            font-family: cursive, 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        .inp:hover{
+            background-color: rgba(241, 236, 230, 0.404);
+            transition: background-colr 3s;
+        }
+        label{
+            display: grid;
+            grid-template-columns: 150px auto;
+            align-items: center;
+            margin-left: 60px;
+            font-family: cursive , 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 22px;
+            color: #F60;
+        }
+        input::placeholder{
+            color: rgb(51, 5, 108);;
+        }
+        input[type="submit"]{
+            display: block;
+            margin: 0px auto;
+            padding: 9px;
+            width: 210px;
+            font-size: 24px;
+            background-color: #F60 ;
+            color: snow;
+            border-radius: 14px;
+            transition: transform 0.3 ease;
+            transition: background-color 2s;
+        }
+         input[type="submit"]:hover{
+            transform: scale(1.1);
+            background-color:  rgb(215, 137, 86) 
+         }
+        hr{
+            border: 3px solid  rgba(92, 24, 174, 0.893);;;;
+            border-radius: 30px;
+        }
+        * { /* ED: applique un calcul de largeur prévisible à tous les éléments. */
+            box-sizing: border-box; /* ED: inclut les bordures et marges internes dans la largeur définie. */
+        } /* ED: termine la règle générale de dimensionnement. */
+        body { /* ED: définit des marges internes adaptables à la taille de l’écran. */
+            margin: 0; /* ED: supprime la marge par défaut du navigateur. */
+            padding: clamp(16px, 4vw, 40px); /* ED: garde un espace autour de la page, plus grand sur grand écran. */
+        } /* ED: termine les réglages généraux de la page. */
+        h1 { /* ED: adapte la taille et l’espacement du titre aux différentes largeurs. */
+            max-width: 900px; /* ED: empêche le titre d’occuper une ligne trop longue sur grand écran. */
+            margin: 20px auto 30px; /* ED: centre le titre et réduit sa grande marge supérieure initiale. */
+            padding: clamp(16px, 3vw, 28px); /* ED: ajoute un espace intérieur proportionnel à l’écran. */
+            font-size: clamp(1.25rem, 4vw, 1.75rem); /* ED: réduit le titre sur mobile et le limite sur grand écran. */
+            overflow-wrap: anywhere; /* ED: autorise la coupure du titre si l’écran est très étroit. */
+        } /* ED: termine les réglages responsive du titre. */
+        #scorePartage { /* ED: rend le score transmis lisible et centré. */
+            text-align: center; /* ED: centre le score sous le titre. */
+            font-size: clamp(1rem, 3vw, 1.25rem); /* ED: adapte la taille du score à l’écran. */
+            overflow-wrap: anywhere; /* ED: évite le débordement pour un texte de score trop long. */
+        } /* ED: termine les réglages d’affichage du score. */
+        hr { /* ED: limite la largeur de la séparation comme celle du contenu. */
+            width: min(100%, 900px); /* ED: garde la ligne dans l’écran et la limite sur grand écran. */
+        } /* ED: termine le réglage de la séparation. */
+        form { /* ED: limite la largeur du formulaire tout en le rendant fluide. */
+            width: min(100%, 700px); /* ED: évite un formulaire trop large et prévient le débordement mobile. */
+            margin: clamp(24px, 5vw, 50px) auto; /* ED: centre le formulaire avec des marges adaptables. */
+        } /* ED: termine les réglages de largeur du formulaire. */
+        fieldset { /* ED: permet au cadre du formulaire de suivre la largeur disponible. */
+            width: 100%; /* ED: occupe la largeur du formulaire. */
+            min-width: 0; /* ED: autorise le cadre à rétrécir sur les petits écrans. */
+            padding: clamp(16px, 4vw, 32px); /* ED: adapte l’espace intérieur du cadre à l’écran. */
+        } /* ED: termine les réglages responsive du cadre. */
+        label { /* ED: adapte les colonnes des champs au formulaire disponible. */
+            grid-template-columns: minmax(0, 150px) minmax(0, 1fr); /* ED: empêche les colonnes de forcer un débordement. */
+            gap: 12px; /* ED: espace le texte du label du champ correspondant. */
+            margin: 14px 0; /* ED: supprime la grande marge gauche fixe sur grand écran. */
+        } /* ED: termine les réglages responsive des labels. */
+        .inp { /* ED: fait suivre les champs de saisie à la colonne disponible. */
+            width: 100%; /* ED: remplit la colonne sans imposer une largeur fixe de 250 pixels. */
+            min-width: 0; /* ED: empêche le champ de dépasser sur un écran étroit. */
+            margin: 0; /* ED: retire les marges fixes qui pouvaient faire déborder les champs. */
+        } /* ED: termine les réglages responsive des champs. */
+        input[type="submit"] { /* ED: adapte le bouton d’envoi à la largeur du formulaire. */
+            width: min(100%, 210px); /* ED: conserve une largeur raisonnable tout en tenant sur mobile. */
+            font-size: clamp(1.1rem, 4vw, 1.5rem); /* ED: ajuste le texte du bouton à l’écran. */
+        } /* ED: termine les réglages responsive du bouton. */
+        @media screen and (max-width: 600px) { /* ED: applique des adaptations supplémentaires sur téléphone. */
+            form { /* ED: réduit l’espace autour du formulaire sur les petits écrans. */
+                margin: 24px auto; /* ED: garde le formulaire centré avec une marge mobile modérée. */
+            } /* ED: termine le réglage mobile du formulaire. */
+            fieldset { /* ED: resserre le cadre pour préserver la place des champs. */
+                padding: 16px; /* ED: réduit le remplissage interne sur téléphone. */
+            } /* ED: termine le réglage mobile du cadre. */
+            label { /* ED: empile le texte et le champ pour une lecture plus facile sur téléphone. */
+                grid-template-columns: minmax(0, 1fr); /* ED: place chaque champ sous son libellé. */
+                gap: 6px; /* ED: rapproche le libellé de son champ. */
+                font-size: 18px; /* ED: adapte la taille du texte aux petits écrans. */
+            } /* ED: termine les réglages mobiles des labels. */
+            .inp { /* ED: ajuste les champs pour la saisie tactile. */
+                padding: 10px; /* ED: conserve une zone de saisie confortable sur téléphone. */
+                font-size: 16px; /* ED: améliore la lisibilité et évite le zoom automatique sur certains mobiles. */
+            } /* ED: termine les réglages mobiles des champs. */
+        } /* ED: termine les adaptations pour téléphone. */
+     </style>
+</head>
+<body>
+
+    <h1>  Partagez votre score avec un proche </h1>
+    <!-- ED: réserve une zone pour afficher le score reçu dans l’adresse de la popup. -->
+    <p id="scorePartage" aria-live="polite"></p>
+      <!------ Contenu du formulaire-------->
+ <hr>
+      <form action="tritement.php" method="post">
+        <fieldset>
+            <legend>
+                Informations personnelle
+            </legend>
+       <!-- ED: ajoute le score au formulaire sans afficher un champ supplémentaire. -->
+       <input type="hidden" name="score" id="scorePartageInput">
+       <label for="Nom complet"> Votre Nom : <input type="text" name="Name user" placeholder="Votre nom complet" class="inp"></label> 
+        <label for="prenom_complet">  Prenom : <input type="type" name="Password user" placeholder="Votre Prenom"class="inp"></label>
+       <label for="Email"> Email : <input type="email" name="Email user" placeholder="Votre email" class="inp"></label>
+      
+        <input type="submit" value="Envoyer">
+        </fieldset>
+      </form>
+</body>
+</html>
